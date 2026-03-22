@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Payment Details</title></head>
+<body>
+  <h1>Payment details</h1>
+  <form method="get" action="/dashboard">
+    <div class="credit-card-form" data-team="payments">
+      <label>
+        Card number
+        <input name="card-number" placeholder="1234 5678 9012 3456" required>
+      </label>
+      <label>
+        Expiry
+        <input name="expiry" placeholder="MM/YY" required>
+      </label>
+      <label>
+        CVV
+        <input name="cvv" placeholder="123" required>
+      </label>
+    </div>
+    <button type="submit">Complete registration</button>
+  </form>
+</body>
+</html>

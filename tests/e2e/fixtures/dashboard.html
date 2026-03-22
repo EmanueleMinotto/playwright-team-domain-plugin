@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Dashboard</title></head>
+<body>
+  <div data-section="dashboard">
+    <h1>Dashboard</h1>
+    <p>Welcome back!</p>
+    <button id="load-data">Load latest data</button>
+    <div id="data-container" aria-live="polite"></div>
+  </div>
+  <script>
+    document.getElementById('load-data').addEventListener('click', function () {
+      fetch('/api/dashboard/data')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          document.getElementById('data-container').textContent = JSON.stringify(data);
+        });
+    });
+  </script>
+</body>
+</html>
