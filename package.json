@@ -1,6 +1,6 @@
 {
   "name": "playwright-team-domain-plugin",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "Playwright plugin that automatically identifies teams involved in E2E test flows and attributes failures to the responsible team",
   "keywords": [
     "playwright",
