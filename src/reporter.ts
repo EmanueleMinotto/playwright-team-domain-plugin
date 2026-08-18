@@ -27,7 +27,22 @@ class TeamDomainReporter implements Reporter {
     }
   }
 
-  onEnd(_result: FullResult): void {}
+  onEnd(_result: FullResult): void {
+    const stats = this.getTeamStats();
+    if (stats.length === 0) return;
+
+    console.log('\nTeam domain summary:');
+    for (const [name, teamStats] of stats) {
+      console.log(`  ${name}: involved in ${teamStats.involved}, responsible for ${teamStats.failures} failure(s)`);
+    }
+  }
+
+  /** Snapshot of aggregated per-team stats, sorted by failures then involvement, both descending. */
+  getTeamStats(): Array<[string, TeamStats]> {
+    return [...this.teamStats.entries()].sort(
+      ([, a], [, b]) => b.failures - a.failures || b.involved - a.involved,
+    );
+  }
 }
 
 export default TeamDomainReporter;

@@ -19,13 +19,19 @@ test.describe('login', () => {
     await expect(page).toHaveURL(/register/);
   });
 
-  test('shows "Forgot password?" link', async ({ page }) => {
+  // Intentional failure — see tests/e2e/README.md ("Intentional failures").
+  // The fixture doesn't implement this feature; used to demonstrate attribution to Team C.
+  // Tagged @intentional-failure — see tests/e2e/registration.spec.ts for why this isn't test.fail().
+  test('shows "Forgot password?" link @intentional-failure', async ({ page }) => {
     await page.goto('/login');
 
     await expect(page.getByRole('link', { name: /forgot password/i })).toBeVisible();
   });
 
-  test('shows personalised greeting after sign-in', async ({ page }) => {
+  // Intentional failure — see tests/e2e/README.md ("Intentional failures").
+  // The fixture doesn't implement this feature; used to demonstrate attribution to Team E.
+  // Tagged @intentional-failure — see tests/e2e/registration.spec.ts for why this isn't test.fail().
+  test('shows personalised greeting after sign-in @intentional-failure', async ({ page }) => {
     const login = new LoginPage(page);
     await login.goto();
     await login.fill('user@example.com', 'Secret123!');

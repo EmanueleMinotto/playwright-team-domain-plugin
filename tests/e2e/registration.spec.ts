@@ -29,13 +29,21 @@ test.describe('registration', () => {
     await expect(page.getByRole('textbox', { name: 'CVV' })).toBeVisible();
   });
 
-  test('shows accepted card brands on payment form', async ({ page }) => {
+  // Intentional failure — see tests/e2e/README.md ("Intentional failures").
+  // The fixture doesn't implement this feature; used to demonstrate attribution to Team B.
+  // Tagged @intentional-failure so `npm run test:e2e:ci` (the CI gate) skips it —
+  // it must fail for real (not test.fail()) for the plugin's own primaryTeam
+  // annotation, which this test demonstrates, to fire.
+  test('shows accepted card brands on payment form @intentional-failure', async ({ page }) => {
     await page.goto('/register-payment');
 
     await expect(page.locator('.accepted-cards')).toBeVisible();
   });
 
-  test('shows password strength indicator', async ({ page }) => {
+  // Intentional failure — see tests/e2e/README.md ("Intentional failures").
+  // The fixture doesn't implement this feature; used to demonstrate attribution to Team A.
+  // Tagged @intentional-failure — see the note above for why this isn't test.fail().
+  test('shows password strength indicator @intentional-failure', async ({ page }) => {
     const register = new RegisterPage(page);
     await register.goto();
     await register.fill('user@example.com', 'Test');

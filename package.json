@@ -45,6 +45,7 @@
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --watch",
     "test:e2e": "playwright test",
+    "test:e2e:ci": "playwright test --grep-invert @intentional-failure",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
