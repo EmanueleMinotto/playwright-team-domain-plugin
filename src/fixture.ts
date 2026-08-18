@@ -53,7 +53,7 @@ export const test = base.extend<TeamDomainFixtures>({
   }, { box: true }],
 });
 
-function annotateTest(
+export function annotateTest(
   testInfo: { annotations: Array<{ type: string; description?: string }> },
   attribution: AttributionResult,
   failed: boolean,
@@ -73,7 +73,7 @@ function annotateTest(
   }
 }
 
-async function attachReport(
+export async function attachReport(
   testInfo: { attach(name: string, options: { body: string; contentType: string }): Promise<void> },
   attribution: AttributionResult,
 ): Promise<void> {

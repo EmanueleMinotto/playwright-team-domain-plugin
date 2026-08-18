@@ -17,7 +17,10 @@ test.describe('dashboard', () => {
     await expect(page.locator('#data-container')).not.toBeEmpty();
   });
 
-  test('dashboard API returns paginated results', async ({ page }) => {
+  // Intentional failure — see tests/e2e/README.md ("Intentional failures").
+  // The fixture doesn't implement this feature; used to demonstrate attribution to Team D.
+  // Tagged @intentional-failure — see tests/e2e/registration.spec.ts for why this isn't test.fail().
+  test('dashboard API returns paginated results @intentional-failure', async ({ page }) => {
     await page.goto('/dashboard');
     await page.waitForSelector('[data-section="dashboard"]');
 

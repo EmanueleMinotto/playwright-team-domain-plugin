@@ -23,6 +23,7 @@ tests/e2e/
   registration.spec.ts   # Registration and payment step tests (Team A + Team B)
   login.spec.ts          # Login flow tests (Team C + Team E)
   dashboard.spec.ts      # Dashboard tests (Team D + Team E)
+  attribution.spec.ts    # Integration tests for the plugin's own attribution wiring
   pages/
     RegisterPage.ts      # Page Object for /register (Team A)
     LoginPage.ts         # Page Object for /login (Team C)
@@ -66,3 +67,7 @@ Each signal has a **type weight** and a **recency weight** (`e^(−0.5 × second
 On failure, the team with the highest combined score is set as `team-domain-primary` in the test annotations and is reported in the console summary.
 
 Attribution details (signals, scores, team rankings) are available as a JSON attachment in each test's trace.
+
+## Testing the plugin itself
+
+The specs above demonstrate attribution visually (console reporter, trace attachment) but don't assert on it programmatically. `attribution.spec.ts` does: it uses the `teamDomain.getAttribution()` fixture to inspect signals and team scores mid-test, against the real server and fixtures — verifying the SignalTracker + `computeAttribution` wiring end to end, not just the unit-tested pieces in isolation.
